@@ -50,11 +50,10 @@
                 i.value = v.substring(0, v.length -1);
                 return;
             }
-            i.setAttribute("maxlength", 14);
-            if(v.length == 3 || v.length == 7) {i.value += ".";}
-            if(v.length == 11) i.value += "-";
+             i.setAttribute("maxlength", 14);
+             if(v.length == 3 || v.length == 7){i.value += ".";}
+             if(v.length == 11) i.value += "-";
 
-            
         }
     </script>
 </head>
@@ -93,7 +92,7 @@
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
-        crossorigin="anonymous"></>
+        crossorigin="anonymous"></script>
 </body>
 
 </html>
