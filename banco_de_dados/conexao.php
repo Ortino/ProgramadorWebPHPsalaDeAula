@@ -1,18 +1,13 @@
 <?php
 
 $hostname = "localhost";
-$banco_de_dados = "banco_php";
+$banco_de_dados = "banco01";
 $usuario = "root";
 $senha = "";
 
-$conexao = new mysqli($hostname, $usuario,$senha , $banco_de_dados);
-if($conexao->connect_errno){ //error +number = errno
-    echo "Falha ao conectar: (" . $conexao->connect_errno .")" . 
-    $conexao->connect_errno;
+$conexao = new mysqli($hostname, $usuario, $senha, $banco_de_dados);
+if($conexao->connect_errno){ // error + number = errno
+    echo "Falha ao conectar: (" . $conexao->connect_errno .")" . $conexao->connect_error;
 } else {
-    // echo "Conectando ao Banco. <br>";
-
-} 
-
-
-?>
+    // echo "Conectado ao Banco.<br>";
+}
