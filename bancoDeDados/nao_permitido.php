@@ -1,9 +1,3 @@
-<?php
-if(!isset($_SESSION)){
-    session_start();
-}
-
-?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -14,25 +8,23 @@ if(!isset($_SESSION)){
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../css/estilo.css" />
+    <link rel="stylesheet" href="css/estilo.css" />
     <title>Senac - Curso de PHP</title>
-    
 </head>
 
 <body>
     <div>
     <?php 
-    $idUsuario = $_SESSION["id"];
-    $nomeUsuario = $_SESSION["nome"];
-
-    echo "<br><h2 style='text-align: center;'>Você não pode acessar essa página sem esta logado!<br>$nomeUsuario</h2>";
+    
+    echo "<br><h2 style='text-align: center;'>Você não pode acessar essa página sem esta logado!</h2>";
 
     ?>
     <a href="index.php" class="btn btn-link">
-            <i class="bi bi-reply" style="font-size: 2rem;"></i>
+        <i class="bi bi-reply" style="font-size: 2rem;"></i>
+    </a>
     
 
-        </a>
+
     </div>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
