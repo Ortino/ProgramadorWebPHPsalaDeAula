@@ -7,7 +7,7 @@
 				<h1 id="textoEnviamos">Enviamos produtos para todo o território nacional.</h1>
 				<figure style="border: none">
 					<img id="carrinho" src="img/carrinhoCompra.png" alt="">
-					<img id="cliente" src="img/clientes.png" alt=""data-bs-toggle="modal" data-bs-target="#login_modal">
+					<img id="cliente" src="img/clientes.png" alt="" data-bs-toggle="modal" data-bs-target="#login_modal">
 				</figure>
 			</section>
 			
@@ -15,8 +15,8 @@
 
 		</header>
 		<!-- Modal -->
-<div class="modal fade" id="login_modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered">
+<div class="modal fade" id="login_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
 					<div class="modal-header">
 						<h1 class="modal-title fs-5" id="staticBackdropLabel">Fazer Login</h1>
@@ -48,4 +48,4 @@
 					</form>
 				</div>
 			</div>
-		</div>
+</div>

@@ -74,8 +74,11 @@
             );
 
             $sql_code = "INSERT INTO cliente  VALUES (NULL, '$nome', '$dataNascimento', '$orgao', '$rg', '$cpf', '$estadoCivil', '$sexo', '$email', '$senha', true)";
-            $sql_query = $conexao->query($sql_code);
+			
+            $sql_query = @$conexao->query($sql_code);
+			// var_dump($sql_query);
 
+			// if($conexao->query($sql_code)){
 			if($sql_query){
 				$sql_code = "SELECT idcliente, nome FROM cliente WHERE cpf = '$cpf'";
 				$sql_query = $conexao->query($sql_code);
@@ -85,17 +88,17 @@
 				$_SESSION["id"] = $cliente['idcliente'];
 				$_SESSION["nome"] = $cliente['nome'];
 
-			echo '<!DOCTYPE html>';
-			echo '<html lang="pt-br">';
-			echo '<head>';
-			echo '</head>';
-			echo '<body>';
-			echo '<div style="width: 1024px; margin: auto;" class="alert alert-success" role="alert">
-				Cadastro realizado com sucesso! <a style="text-decoration: none; float: right;" href="cadastroCliente.php" class="alert-link">x</a>
-				<br><a style="text-decoration: none; float: left;" href="cadastroClienteComplemento.php" class="alert-link">Cadastro Coplementar</a><br>
-			</div>';
-			echo '</body>';
-			echo '</html>';
+				echo '<!DOCTYPE html>';
+				echo '<html lang="pt-br">';
+				echo '<head>';
+				echo '</head>';
+				echo '<body>';
+				echo '<div style="width: 1024px; margin: auto;" class="alert alert-success" role="alert">
+					Cadastro realizado com sucesso! <a style="text-decoration: none; float: right;" href="cadastroCliente.php" class="alert-link">x</a>
+					<br><a style="text-decoration: none; float: left;" href="cadastroClienteComplemento.php" class="alert-link">Cadastro Coplementar</a><br>
+				</div>';
+				echo '</body>';
+				echo '</html>';
 			} else {
 				echo '<!DOCTYPE html>';
 				echo '<html lang="pt-br">';

@@ -1,22 +1,17 @@
-<?php
-    require_once "src/protect.php"?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
-	<?php include "html/header.php" ?>
+	<?php require "html/head.php" ?>
+
 </head>
 
 	<!--  -->
 	<body>
-		
+		<?php include "html/header.php" ?>
 		<main>
 		<?php
 
-        $idcliente = $_SESSEION['ID'];
-        $nomeCliente = $_SESSEION['nome'];
-        echo "ID $idcliente - cliente: $nomeCliente";
-        ?> 
 		echo '<!DOCTYPE html>';
 		echo '<html lang="pt-br">';
 		echo '<head>';
@@ -31,7 +26,7 @@
 		echo '</html>';
         // echo "<br><h2 style='text-align: center;'>Você não pode acessar essa página sem esta logado!</h2>";
         
-        
+        ?>
                
         <br />
         <br />
@@ -39,17 +34,16 @@
             <i class="bi bi-reply" style="font-size: 2rem;"></i>
         </a>
         <?php die(); ?>
-
-
-
-			
 		</main>
-		<?php include "html/rodape.php";
-		?>
+<?php
+	include "html/rodaPe.php";
+?>
+
+
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
-	
+
 </body>
 
 </html>
