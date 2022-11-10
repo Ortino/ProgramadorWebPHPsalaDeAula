@@ -1,15 +1,26 @@
+<?php
+ require_once "src/protect.php";
+?>
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
 	<?php require "html/head.php" ?>
+
 </head>
 
 	<!--  -->
 	<body>
-		
+		<?php include "html/header.php" ?>
 		<main>
-		<div class="accordion" id="accordionExample">
+
+        <?php 
+        $idcliente = $_SESSION['id'];
+        $nomeCliente = $_SESSION['nome'];
+        echo "ID: $idcliente - Cliente: $nomeCliente";
+        ?>
+		
+            <div class="accordion" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header" id="headingOne">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -18,7 +29,8 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-	  <div class="container-fluid">
+        <!-- --------------------------------------------------- -->
+        <div class="container-fluid">
         <form class="row g-3 container-fluid" name="f" action="" method="post">
             <input type="text" class="form-control" id="id_cliente" name="idcliente" value="" hidden>
             
@@ -66,21 +78,20 @@
             </div>
         </form>
     </div>
-	  <!-- ---------------------------------------------------------------------- -->
-        <strong>
-
-      </div>
+        <!-- --------------------------------------------------- -->
     </div>
-  </div>
-  <div class="accordion-item">
+</div>
+</div>
+<div class="accordion-item">
     <h2 class="accordion-header" id="headingTwo">
-      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-        <h5>Contatos</h5>
-      </button>
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <h5>Contatos</h5>
+        </button>
     </h2>
     <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-      <div class="accordion-body">
-	  <div class="container-fluid">
+        <div class="accordion-body">
+            <!-- --------------------------------------------------- -->
+            <div class="container-fluid">
         <form class="row g-3 container-fluid" name="c" action="" method="post">
             <input type="text" class="form-control" id="id_cliente" name="idcliente" value="" hidden>
             
@@ -109,21 +120,22 @@
             </div>
         </form>
     </div>
-
-        <strong>
-
+            <!-- --------------------------------------------------- -->
       </div>
     </div>
   </div>
-
-			
+  
+</div>
 		</main>
-		<?php include "html/rodape.php";
-		?>
+<?php
+	include "html/rodaPe.php";
+?>
+
+
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
-	
+
 </body>
 
 </html>

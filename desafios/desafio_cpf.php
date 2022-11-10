@@ -62,7 +62,7 @@
     <div>
 
         <h3 style="text-align: center;">
-            Cadastro de Aluno
+            Cadastro de Aluno.
         </h3>
         <hr>
         <br>
