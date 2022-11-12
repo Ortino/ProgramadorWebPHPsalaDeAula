@@ -2,35 +2,43 @@
 <html lang="pt-br">
 
 <head>
-	<?php
+	<?php 
 	require "html/head.php";
 	
-	if (isset($_FILES['foto'])) {
+	if(isset($_FILES['foto'])){
 		$foto = $_FILES['foto'];
 		// var_dump($_FILES['foto']);
+		//array(6) { ["name"]=> string(21) "Professortocat_v2.png" ["full_path"]=> string(21) "Professortocat_v2.png" ["type"]=> string(9) "image/png" ["tmp_name"]=> string(24) "C:\xampp\tmp\phpE019.tmp" ["error"]=> int(0) ["size"]=> int(30765) }	
+		//2MB = 2097153by
 		if($foto['size'] > 2097152){
-			die("Arquivo muito grande! Max: 2mb");
+			die("Arquivo muito grande! Max: 2MB");
 		}
+
 		$pasta = "img/produtos/";
 		$nomeOriginal = $foto['name'];
 		$nomeDaFoto = uniqid();
 		$extensao = strtolower(pathinfo($nomeOriginal, PATHINFO_EXTENSION));
 
-		if($extensao != "jpg" && $extensao !="png"){
+		if($extensao != "jpg" && $extensao != "png"){
 			die("Tipo de arquivo não aceito");
 		}
+		// img/produtos/sdfksajfksa.png
+		$deu_certo = move_uploaded_file($foto["tmp_name"], $pasta . $nomeDaFoto . "." .$extensao);
 
-		$deu_certo = move_uploaded_file($foto['tmp_name'], $pasta . $nomeDaFoto . "." . $extensao);
 		if($deu_certo){
-			echo "<p>Arquivo enviado com sucesso! Para acessa-lo clique aqui
-			<a target='_blank' href='$pasta$nomeDaFoto.$extensao'>Foto</a>
+			echo "<p>Arquivo enviado com sucesso! Para acessá-lo clique aqui:
+			<a target='_blank' href='$pasta$nomeDaFoto.$extensao'>Foto</a> 
 			</p>";
+			
+		} else {
+			echo "<p>Falha ao enviar arquivo!</p>";
 		}
+
 	}
-	?>
-
 	
-
+	
+	?>
+	
 </head>
 
 	<!--  -->
@@ -38,7 +46,7 @@
 		<?php include "html/header.php" ?>
 		<main>
 		<div class="container-fluid">
-			<h3>Cadastro de Produtos</h3>
+			<h3>Cadastro de Produto</h3>
 			<form enctype="multipart/form-data" class="row g-3 container-fluid" action="" method="post">
 
 				<div class="col-md-6 col-sm-12">
