@@ -22,7 +22,6 @@
 			document.getElementById("perid").disabled = false;
 			document.getElementById("divPer").style.display = 'block';
 		}
-
 	}
 	</script>
 	
@@ -66,10 +65,9 @@
 				$sql_query = $conexao->query($sql_code) or die("Falha na execução do código SQL: " . $conexao->error . "<br>" . var_dump($conexao->error));
 				if($sql_query){
 					echo "Gravou!";
-				}else{
-					echo "Não gravou";
+				} else {
+					echo "Não gravou!";
 				}
-				
 
 				echo "<p>Arquivo enviado com sucesso! Para acessá-lo clique aqui:
 				<a target='_blank' href='$pasta$nomeDaFoto.$extensao'>Foto</a> 

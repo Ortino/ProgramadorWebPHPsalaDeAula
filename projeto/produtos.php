@@ -11,47 +11,46 @@
 		<?php 
 		include "html/header.php";
 		require_once "src/conexao.php";
+
 		$sql_code = "SELECT * FROM produtos";
 		$sql_query = $conexao->query($sql_code);
 		?>
 		<main>
 			<h1>Produtos</h1>
-			<h3>Lista Cadastros</h3>
+			<h3>Lista cadastrados</h3>
 			<table class="table table-bordered">
-			<tr>
-				<th>ID</th>
-				<th>FOTO</th>
-				<th>NOME</th>
-				<th>TIPO</th>
-				<th>CATEGORIA</th>
-				<th>FABRICANTE</th>
-				<th>ATIVO</th>
-				<th>AÇÃO</th>
-			</tr>
-			<?php
-			while($produto =$sql_query->fetch_assoc()){
-				
-			?>
-			<tr>
-			<th><?= $produto['idproduto']?></th>
-			<th><img height="50" src="<?= $produto['foto']?>"></th>
-			<th><?= $produto['nome']?></th>
-			<th><?= $produto['tipo']?></th>
-			<th><?= $produto['categoria']?></th>
-			<th><?= $produto['fabricante']?></th>
-			<th><?= $produto['ativo']?></th>
-			
-			<a href="#?id=<?=$produto['idproduto']; ?>" <[EDITAR]</a>
-			<a href="#?id=<?=$produto['idproduto']; ?>" <[EXCLUIR]</a>
-
-			</tr>
-			<?php
-			}
-			?>
+				<tr>
+					<th>ID</th>
+					<th>FOTO</th>
+					<th>NOME</th>
+					<th>TIPO</th>
+					<th>CATEGORIA</th>
+					<th>FABRICANTE</th>
+					<th>ATIVO</th>
+					<th>AÇÃO</th>
+				</tr>
+				<?php 
+				while($produto = $sql_query->fetch_assoc()){
+				?>
+				<tr>
+					<td><?= $produto['idproduto']?></td>
+					<td><img height="50" src="<?= $produto['foto']?>"></td>
+					<td><?= $produto['nome']?></td>
+					<td><?= $produto['tipo']?></td>
+					<td><?= $produto['categoria']?></td>
+					<td><?= $produto['fabricante']?></td>
+					<td><?= $produto['ativo']?></td>
+					<td>
+					<a href="estoque.php?id=<?=$produto['idproduto']; ?>">[ESTOQUE]</a>
+                        <a href="mais_detalhes?id=<?=$produto['idproduto']; ?>">[DETALHES]</a>
+					</td>
+				</tr>
+				<?php
+				}
+				?>
 			</table>
 		</main>
 <?php
-
 	include "html/rodaPe.php";
 ?>
 

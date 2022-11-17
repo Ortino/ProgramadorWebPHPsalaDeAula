@@ -15,53 +15,49 @@
 		$id= isset($_GET["id"]) ? $_GET["id"] : 0;
 
 		$sql_code = "SELECT * FROM produtos LEFT JOIN  estoque ON idproduto = id_produto WHERE idproduto = '$id'";
-		$sql_query = 
+		$sql_query = $conexao->query($sql_code);
 
-
+		
 		?>
 		<main>
 			<h1>Estoque</h1>
-			<h3>Lista Cadastros</h3>
-			<table class="table table-bordered">
-			<tr>
-				<th>ID</th>
-				<th>FOTO</th>
-				<th>NOME</th>
-				<th>TIPO</th>
-				<th>CATEGORIA</th>
-				<th>FABRICANTE</th>
-				<th></th>
-				<th>REGISTRO</th>
-				<th>DATA</th>
-				<th>VALOR COMPRA</th>
-				<th>VALOR VENDA</th>
-			</tr>
-			<?php
-			while($produto =$sql_query->fetch_assoc()){
-				
-			?>
-			<tr>
-			<th><?= $produto['idproduto']?></th>
-			<th><img height="50" src="<?= $produto['foto']?>"></th>
-			<th><?= $produto['nome']?></th>
-			<th><?= $produto['tipo']?></th>
-			<th><?= $produto['categoria']?></th>
-			<th><?= $produto['fabricante']?></th>
-			<th><?= $produto['qtd']?></th>
-			<th><?= $produto['registro']?></th>
-			<th><?= $produto['data-registro']?></th>
-			<th><?= $produto['valor_compra']?></th>
-			<th><?= $produto['valor_venda']?></th>
-			
-			<a href="estoque.php?id=<?=$produto['idproduto']; ?>" <[ESTOQUE]</a>
-			<a href="mais_detalhes?id=<?=$produto['idproduto']; ?>" <[DETALHES]</a>
-
-			</tr>
-			<?php
-			}
-			?>
-			</table>
+			<h3>Lista cadastrados</h3>
 			<div class="table-responsive">
+			<table class="table table-bordered">
+				<tr>
+					<th>ID</th>
+					<th>FOTO</th>
+					<th>NOME</th>
+					<th>TIPO</th>
+					<th>CATEGORIA</th>
+					<th>FABRICANTE</th>
+					<th>QTD</th>
+					<th>REGISTRO</th>
+					<th>DATA</th>
+					<th>VALOR COMPRA</th>
+					<th>VALOR VENDA</th>
+				</tr>
+				<?php 
+				while($produto = $sql_query->fetch_assoc()){
+				?>
+				<tr>
+					<td><?= $produto['idproduto']?></td>
+					<td><img height="50" src="<?= $produto['foto']?>"></td>
+					<td><?= $produto['nome']?></td>
+					<td><?= $produto['tipo']?></td>
+					<td><?= $produto['categoria']?></td>
+					<td><?= $produto['fabricante']?></td>
+					<td><?= $produto['qtd']?></td>
+					<td><?= $produto['registro']?></td>
+					<td><?= $produto['data_registro']?></td>
+					<td><?= $produto['valor_compra']?></td>
+					<td><?= $produto['valor_venda']?></td>
+				</tr>
+				<?php
+				}
+				?>
+			</table>
+			</div>
 			<div class="container-fluid">
             <h3>Registro de Produto</h3>
             <form class="row g-3 container-fluid" action="" method="post">
@@ -86,11 +82,11 @@
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <label for="valorid" class="form-label">Valor Compara Unitário</label>
-                    <input type="number" class="form-control" id="valorid" name="valor_compra" value="" required tern="[0-9] ([,\.][0-9] )?" min="0" step="any">
+                    <input type="number" class="form-control" id="valorid" name="valor_compra" value="" required tern="[0-9]+([,\.][0-9]+)?" min="0" step="any">
                 </div>
                 <div class="col-md-3 col-sm-12">
                     <label for="valorid" class="form-label">Valor Venda Unitário</label>
-                    <input type="number" class="form-control" id="valorid" name="valor_venda" value="" required tern="[0-9] ([,\.][0-9] )?" min="0" step="any">
+                    <input type="number" class="form-control" id="valorid" name="valor_venda" value="" required tern="[0-9]+([,\.][0-9]+)?" min="0" step="any">
                 </div>
                 <div class="col-12">
                     <button class="btn btn-primary" type="submit" id="btn-off" disabled style="display: none">Cadastrar</button>
@@ -100,7 +96,6 @@
         </div>
 		</main>
 <?php
-
 	include "html/rodaPe.php";
 ?>
 
