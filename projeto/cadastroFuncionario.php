@@ -45,40 +45,21 @@
         require_once "src/conexao.php";
         require_once "src/model/Cliente.php";
 
-        
-        if(isset($_POST["nome"]) && isset($_POST["senha2"])){
-
-            $cliente = new Cliente(
-                $idCliente,
-                $nome,
-                $dataNascimento,
-                $orgao,
-                $rg,
-                $cpf,
-                $estadoCivil,
-                $sexo,
-                $email,
-                $senha,
-                $ativo
-            );
-
-            $sql_code = "INSERT INTO cliente  VALUES (NULL, '$nome', '$dataNascimento', '$orgao', '$rg', '$cpf', '$estadoCivil', '$sexo', '$email', '$senha', true)";
+		if(isset($_GET['gravado'])){
 			
-            $sql_query = @$conexao->query($sql_code);
-			
-			if(isset($_GET)) 
-			$gravado = isset($_GET['gravado']) ? $_GET['gravado'] : 0;
+		$gravado = isset($_GET['gravado']) ? $_GET['gravado'] : 0;
+		
+        if($gravado > 0){
 
-			if($gravado > 0){
-				
 				echo '<!DOCTYPE html>';
 				echo '<html lang="pt-br">';
 				echo '<head>';
+				echo '<meta http-equiv="refresh" content="5; url=cadastroFuncionario.php">';
 				echo '</head>';
 				echo '<body>';
 				echo '<div style="width: 1024px; margin: auto;" class="alert alert-success" role="alert">
-					Cadastro realizado com sucesso! <a style="text-decoration: none; float: right;" href="cadastroCliente.php" class="alert-link">x</a>
-					<br><a style="text-decoration: none; float: left;" href="cadastroClienteComplemento.php" class="alert-link">Cadastro Coplementar</a><br>
+					Cadastro realizado com sucesso! <a style="text-decoration: none; float: right;" href="cadastroFuncionario.php" class="alert-link">x</a>
+					<br>
 				</div>';
 				echo '</body>';
 				echo '</html>';
@@ -90,7 +71,7 @@
 				echo '</head>';
 				echo '<body>';
 				echo '<div style="width: 1024px; margin: auto;" class="alert alert-danger" role="alert">
-					Erro ao adicionado! <a style="text-decoration: none; float: right;" href="cadastroFuncionario.php" class="alert-link">x</a>
+					Erro ao adicionado! <a style="text-decoration: none; float: right;" href="cadastroCliente.php" class="alert-link">x</a>
 				</div>';
 				echo '</body>';
 				echo '</html>';
@@ -101,7 +82,7 @@
 
 		<main>
         <div class="container-fluid">
-			<h3>Cadastro do Funcionário</h3>
+			<h3>Cadastro de Funcionárioos</h3>
 			<form class="row g-3 container-fluid" name="f" action="src/controler/funcionario_bd/registroFuncionario.php" method="post">
 
 				<div class="col-md-6 col-sm-12">
@@ -119,52 +100,33 @@
 					<label for="cpf_id" class="form-label">CPF</label>
 					<input type="cpf" class="form-control" id="cpf_id" name="cpf" value="" required>
 				</div>
-				<div class="col-md-3 col-sm-12">
+				<div class="col-md-4 col-sm-12">
 					<label for="dtnasci" class="form-label">Data de nascimento</label>
 					<input type="date" class="form-control" id="dtnasci" name="nascimento" value="" required>
-					</div>
-
-				<div class="col-md-4 col-sm-12">
-					<label for="or_id" class="form-label">celular</label>
-					<input type="text" class="form-control" id="or_id" name="orgao" value="" required>
 				</div>
 				<div class="col-md-4 col-sm-12">
-					<label for="rg_id" class="form-label">celular</label>
-					<input type="text" class="form-control" id="rg_id" name="rg" value="" required>
+					<label for="or_id" class="form-label">Celular</label>
+					<input type="text" class="form-control" id="or_id" name="celular" value="" required>
 				</div>
-				<div class="col-md-3 col-sm-12">
-					<label for="estadoc" class="form-label">estado civil</label>
-					<select class="form-select" id="estadoc" name="estado_civil" 
-				<div class="col-md-3 col-sm-12">
-
-					<label for="estadoc" class="form-label">Tipo</label>
+				<div class="col-md-6 col-sm-12">
+					<label for="estadoc" class="form-label">Estado civil</label>
 					<select class="form-select" id="estadoc" name="estado_civil" required>
+						<option selected disabled value="">Selecione</option>
+						<option value="Solteiro">Solterio(a)</option>
+						<option value="Casado">Casado(a)</option>
+						<option value="Divorciado">Divorciado(a)</option>
+						<option value="Viuvo">Viuvo(a)</option>
+					</select>
+				</div>
+				<div class="col-md-6 col-sm-12">
+					<label for="tipo_id" class="form-label">Tipo</label>
+					<select class="form-select" id="tipo_id" name="tipo" required>
 						<option selected disabled value="">Selecione</option>
 						<option value="Administrador">Administrador</option>
 						<option value="Vendendor">Vendendor</option>
 					</select>
 				</div>
-				<div class="col-md-6 col-sm-12">
-					<label class="form-label">Sexo</label><br>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="sexo" id="sexo_id1" value="M">
-						<label class="form-check-label" for="sexo_id1">
-							Masculino
-						</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="sexo" id="sexo_id2" value="F">
-						<label class="form-check-label" for="sexo_id2">
-							Feminino
-						</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="sexo" id="sexo_id3" value="O">
-						<label class="form-check-label" for="sexo_id3">
-							Outros
-						</label>
-					</div>
-				</div>
+					
 				<div class="col-md-6 col-sm-12">
 					<label for="sen1" class="form-label">Senha</label>
 					<input type="password" class="form-control" id="sen1" onblur="confirma()" name="senha" value="" required>
