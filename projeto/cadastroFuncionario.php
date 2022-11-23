@@ -6,8 +6,8 @@
 	 require "html/head.php";
 	 if(!isset($_SESSION)){
 		session_start();
-	}
-	?>
+	 }
+	 ?>
 
     <script>
         		function confirma() {
