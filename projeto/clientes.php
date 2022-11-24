@@ -2,7 +2,7 @@
 <html lang="pt-br">
 
 <head>
-	<?php require "html/head.php" ?>
+    <?php require "html/head.php"?>
 </head>
 
 	<!--  -->
@@ -10,6 +10,13 @@
 		<?php 
         include "html/header.php"; 
         require_once "src/conexao.php";
+        require_once "src/protect.php";
+
+        $id = isset($_SESSION["id"]) ? $_SESSION["id"] : 0;
+        $nome = isset($_SESSION["nome"]) ? $_SESSION["nome"] : "";
+        $tipo = isset($_SESSION["tipo"]);
+
+        if(!isset($_SESSION["tipo"]));
 
         $lista = [];
         $sql_code = "SELECT * FROM cliente";
@@ -24,8 +31,7 @@
             session_start();
         }
     
-        $id = isset($_SESSION["id"]) ? $_SESSION["id"] : 0;
-        $nome = isset($_SESSION["nome"]) ? $_SESSION["nome"] : "";
+       
 
         // echo "ID: $id - Cliente: $nome";
         ?>
@@ -61,10 +67,18 @@
                     <td><?=$cliente["email"]; ?></td>
                     <td><?=$cliente["ativo"]; ?></td>
                     <td>
-                        <a href="edicaoCliente.php?id=<?=$cliente['idcliente']; ?>">[EDITAR]</a>
+                        <a href="src/controle/cliente_bd/edicaoCliente.php?id=<?=$cliente['idcliente']; ?>">
+                        <!-- [EDITAR] -->
+                        <i class="bi bi-pencil-square" style="font-size: 2rem; color: blue;"></i>
+                        </a>
+
                         <?php if(isset($_SESSION['tipo']) && $_SESSION['tipo'] == "Administrador"){?>
 
-                        <a href="excluirCliente.php?id=<?=$cliente['idcliente']; ?>">[EXCLUIR]</a>
+                        <a href="#" onclick="confirmarApagar(<?=$cliente['idcliente']; ?>)">
+                        <!-- src/controle/cliente_bd/excluirCliente.php? -->
+                        <!--[EXCLUIR]-->
+                        <i class="bi bi-trash" style="font-size: 2rem; color: red;"></i>
+                        </a>
                         
                         <?php } ?>
                     </td>
@@ -83,6 +97,7 @@
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"
         crossorigin="anonymous"></script>
+        <script src="src/js/confirmacao.js"></script>
 
 </body>
 
