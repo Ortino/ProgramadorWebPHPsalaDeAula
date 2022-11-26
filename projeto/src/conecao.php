@@ -3,7 +3,7 @@
 $hostname = "localhost";
 $banco_de_dados = "projeto";
 $usuario = "root";
-$senha = "";
+$senha = "o&1~!*pz+S65+Y?u";
 
 $conexao = new mysqli($hostname, $usuario, $senha, $banco_de_dados);
 if($conexao->connect_errno){ // error + number = errno

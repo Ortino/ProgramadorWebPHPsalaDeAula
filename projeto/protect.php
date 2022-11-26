@@ -6,3 +6,4 @@ if(!isset($_SESSION)){
 if(!isset($_SESSION['id'])){
     header("Location: nao_permitidp.php");
 }
+?>
