@@ -122,11 +122,11 @@
 						<input type="email" class="form-control" id="email_id" name="email" value="" aria-describedby="inputGroupPrepend2" required>
 					</div>
 				</div>
-				<div class="col-md-6 col-sm-12">
+				<div class="col-md-4 col-sm-12">
 					<label for="cpf_id" class="form-label">Bairro</label>
 					<input type="cpf" class="form-control" id="cpf_id" name="cpf" value="" required>
 				</div>
-				<div class="col-md-6 col-sm-12">
+				<div class="col-md-4 col-sm-12">
 					<label for="or_id" class="form-label">Cidade</label>
 					<input type="text" class="form-control" id="or_id" name="orgao" value="" required>
 				</div>
@@ -168,11 +168,11 @@
 							Outros
 						</label>
 					</div>
-				</div>
+				</div> -->
 				<div class="col-md-6 col-sm-12">
 					<label for="sen1" class="form-label">Senha</label>
 					<input type="password" class="form-control" id="sen1" onblur="confirma()" name="senha" value="" required>
-				</div>-->
+				</div>
 				<div class="col-md-6 col-sm-12" id="divConfirma" style="display: none">
 					<label for="sen2" class="form-label">Confirmação senha</label>
 					<input type="password" class="form-control" id="sen2" onblur="verifica()" name="senha2" value="" required>
