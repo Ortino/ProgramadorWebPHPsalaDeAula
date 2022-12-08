@@ -35,7 +35,7 @@
 					</div>
 				</a>
 
-				<a href="#">
+				<a href="endereco.php">
 					<div class="col">
 						<div class="card" >
 						<i class="bi bi-house text-center text-danger" style="font-size: 10rem;"></i>
@@ -47,7 +47,7 @@
 					</div>
 				</a>
 				
-				<a href="#">
+				<a href="cadastro_de_contato.php">
 					<div class="col">
 						<div class="card" >
 						<i class="bi bi-telephone text-center text-danger" style="font-size: 10rem;"></i>

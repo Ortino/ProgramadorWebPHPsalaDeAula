@@ -43,7 +43,7 @@
                         </select>
                     </div>
                     <div class="col-md-8 col-sm-12">
-                        <label for="rua" class="form-label">Logradouro</label>
+                        <label for="rua" class="form-label">Endereço</label>
                         <input type="text" class="form-control" id="rua" name="logradouro" value="" required>
                     </div>
                     <div class="col-md-1 col-sm-12">

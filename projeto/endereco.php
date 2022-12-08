@@ -42,8 +42,7 @@
 	<!--  -->
 	<body>
 		<?php 
-        include "html/header.php"; 
-        // require_once "src/mais_detalhes.php";
+		include "html/header.php"; 
 
         $endereco = isset($_POST["endereco"]) ? $_POST["endereco"] : 0;
         $ativo = isset($_POST["ativo"]) ? $_POST["ativo"] : true;
@@ -51,20 +50,14 @@
         if(isset($_POST["nome"]) && isset($_POST["senha2"])){
 
             $cliente = new Cliente(
-                $idCliente,
-                $nome,
-                $dataNascimento,
-                $orgao,
-                $rg,
-                $cpf,
-                $estadoCivil,
-                $sexo,
-                $email,
-                $senha,
-                $ativo
-            );
+				$endereco,
+				$numero,
+				$bairro,
+				$cidade
 
-            $sql_code = "INSERT INTO cliente  VALUES (NULL, '$nome', '$dataNascimento', '$orgao', '$rg', '$cpf', '$estadoCivil', '$sexo', '$email', '$senha', true)";
+			);
+
+            $sql_code = "INSERT INTO cliente  VALUES (NULL, '$endereco', '$numero', '$bairro', '$cidade', true)";
 			
             $sql_query = @$conexao->query($sql_code);
 			// var_dump($sql_query);
@@ -116,7 +109,7 @@
 					<label for="nome_id" class="form-label">Endereço</label>
 					<input type="text" class="form-control" id="nome_id" name="nome" value="" required>
 				</div>
-				<div class="col-md-6 col-sm-5">
+				<div class="col-md-2 col-sm-12">
 					<label for="email_id" class="form-label">Numero</label>
 					<div class="input-group">
 						<input type="email" class="form-control" id="email_id" name="email" value="" aria-describedby="inputGroupPrepend2" required>
@@ -126,50 +119,11 @@
 					<label for="cpf_id" class="form-label">Bairro</label>
 					<input type="cpf" class="form-control" id="cpf_id" name="cpf" value="" required>
 				</div>
-				<div class="col-md-4 col-sm-12">
+				<div class="col-md-3 col-sm-12">
 					<label for="or_id" class="form-label">Cidade</label>
 					<input type="text" class="form-control" id="or_id" name="orgao" value="" required>
 				</div>
-				<!-- <div class="col-md-4 col-sm-12">
-					<label for="rg_id" class="form-label">Identidade</label>
-					<input type="text" class="form-control" id="rg_id" name="rg" value="" required>
-				</div>
 				<div class="col-md-3 col-sm-12">
-					<label for="dtnasci" class="form-label">Data de nascimento</label>
-					<input type="date" class="form-control" id="dtnasci" name="nascimento" value="" required>
-				</div>
-				<div class="col-md-3 col-sm-12">
-					<label for="estadoc" class="form-label">Estado civil</label>
-					<select class="form-select" id="estadoc" name="estado_civil" required>
-						<option selected disabled value="">Selecione</option>
-						<option value="Solteiro">Solterio(a)</option>
-						<option value="Casado">Casado(a)</option>
-						<option value="Divorciado">Divorciado(a)</option>
-						<option value="Viuvo">Viuvo(a)</option>
-					</select>
-				</div>
-				<div class="col-md-6 col-sm-12">
-					<label class="form-label">Sexo</label><br>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="sexo" id="sexo_id1" value="M">
-						<label class="form-check-label" for="sexo_id1">
-							Masculino
-						</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="sexo" id="sexo_id2" value="F">
-						<label class="form-check-label" for="sexo_id2">
-							Feminino
-						</label>
-					</div>
-					<div class="form-check form-check-inline">
-						<input class="form-check-input" type="radio" name="sexo" id="sexo_id3" value="O">
-						<label class="form-check-label" for="sexo_id3">
-							Outros
-						</label>
-					</div>
-				</div> -->
-				<div class="col-md-6 col-sm-12">
 					<label for="sen1" class="form-label">Senha</label>
 					<input type="password" class="form-control" id="sen1" onblur="confirma()" name="senha" value="" required>
 				</div>
