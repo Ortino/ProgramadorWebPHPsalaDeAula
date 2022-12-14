@@ -1,5 +1,6 @@
 <?php
  require_once "src/protect.php";
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -43,7 +44,7 @@
                         </select>
                     </div>
                     <div class="col-md-8 col-sm-12">
-                        <label for="rua" class="form-label">Endereço</label>
+                        <label for="rua" class="form-label">Logradouro</label>
                         <input type="text" class="form-control" id="rua" name="logradouro" value="" required>
                     </div>
                     <div class="col-md-1 col-sm-12">
