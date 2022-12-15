@@ -38,7 +38,8 @@
                    
 
                     if($lembrar){
-                    setcookie('login', $cliente['email'], strtotime("+1 month"), "/", "", false, true);
+                        if (!isset($_COOKIE['login']) || $_COOKIE['login'] != $email){
+                    setcookie('login', $cliente['email'], strtotime("+1 month"), "/", "", false, true);}
                     } else {
                         setcookie('login', $cliente['email'], strtotime("-1 month"), "/", "", false, true);
                     }
