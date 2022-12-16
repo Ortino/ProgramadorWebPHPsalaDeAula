@@ -42,8 +42,7 @@ header img {
     height: 90px;
 }
 
-/* header input[type=text] { */
-#buscar{
+header input[type=text] {
     /* ALTERADO */
     width: 500px;
     height: 40px;

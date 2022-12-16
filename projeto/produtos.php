@@ -11,17 +11,8 @@
 		<?php 
 		include "html/header.php";
 		require_once "src/conexao.php";
-		$buscado = isset($_GET['buscado']) ? $_GET ['buscado'] : '';
 
-		$sql_code;
-		if($buscado){
-			$sql_code = "SELECT * FROM produtos WHERE descricao LIKE '%$buscado%' ORDER BY nome";
-			
-		}else {
-
-			$sql_code = "SELECT * FROM produtos";
-		}
-
+		$sql_code = "SELECT * FROM produtos";
 		$sql_query = $conexao->query($sql_code);
 
 		if(!isset($_SESSION)){
@@ -41,8 +32,6 @@
 		?>
 			<h1>Produtos</h1>
 			<h3>Lista cadastrados</h3>
-			<?php if($sql_query -> num_rows > 0) : ?>
-			<div>
 			<table class="table table-bordered">
 				<tr>
 					<th>ID</th>
@@ -78,12 +67,6 @@
 				}
 				?>
 			</table>
-
-			</div>
-			<?php else :
-			echo "<h3 style='text_alien: center; margin-top: 60px'> o produto: $buscado Não foi encontrado.</h3>"; 
-			endif;
-			?>
 		</main>
 <?php
 	include "html/rodaPe.php";
