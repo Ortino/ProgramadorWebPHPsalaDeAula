@@ -2,7 +2,11 @@
 <html lang="pt-br">
 
 <head>
-	<?php require "html/head.php" ?>
+    <?php require "html/head.php";
+    if(!isset($_SESSION)){
+        session_start();
+    }
+    ?>
 
 </head>
 
@@ -56,6 +60,7 @@
 
     } 
 
+    include_once 'carrinho.php'
     
         ?>
 		<main>
