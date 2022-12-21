@@ -2,7 +2,8 @@
 <html lang="pt-br">
 
 <head>
-    <?php require "html/head.php";
+	<?php 
+    require_once "html/head.php"; 
     if(!isset($_SESSION)){
         session_start();
     }
@@ -60,8 +61,8 @@
 
     } 
 
-    include_once 'carrinho.php'
-    
+    include_once 'carrinho.php';
+
         ?>
 		<main>
 		<h1>Detalhes do produto</h1>

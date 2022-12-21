@@ -23,12 +23,13 @@ if(!isset($_SESSION)){
 
 				<h1 id="textoEnviamos">Enviamos produtos para todo o território nacional.</h1>
 				<figure style="border: none">
-					<img id="carrinho" src="img/carrinhoCompra<?= (isset($_SESSION['carrinho'])) ? '2' : '' ?>.png" alt="" data-bs-toggle="modal" data-bs-target="#carrinho_modal" >
+				<img id="carrinho" src="img/carrinhoCompra<?= (isset($_SESSION['carrinho'])) ? '2' : '' ?>.png" alt="" data-bs-toggle="modal" data-bs-target="#carrinho_modal">
+				<!-- <img id="carrinho" src="img/carrinhoCompra.png" > -->
 					<?php
 					
-					// if(!isset($_SESSION)){
-					// 	session_start();
-					// }
+					if(!isset($_SESSION)){
+						session_start();
+					}
 
 					if(!isset($_SESSION['id'])){
 
@@ -146,7 +147,6 @@ if(!isset($_SESSION)){
 				</div>
 			</div>
 </div>
-
 <!-- Modal -->
 <div class="modal fade" id="carrinho_modal" tabindex="-1" aria-labelledby="exampleModalPopoversLabel" style="display: none;" aria-hidden="true">
   <div class="modal-dialog">
@@ -154,27 +154,27 @@ if(!isset($_SESSION)){
       <div class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalPopoversLabel">Carrinho de compras</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-    </div>
-    <div class="modal-body">
-	
-	<?php
-		endforeach;
-	endif; 
-	?>
+      </div>
+      <div class="modal-body">
+		<?php if(isset($_SESSION['carrinho'])) : ?>
         <h2 class="fs-5"><?= count($_SESSION['carrinho']) ?> - PRODUTOS NO SEU CARRINHO</h2><br>
-        <?php foreach($_SESSION['carrinho'] as $key => $value) : ?>
-            <div>
-                <a id="excluir" href="?remover=<?= $key ?>"><i class="bi bi-trash text-danger"></i></a>
-                <?= $value['qtd'] .' x '. number_format($value['valor'], 2, ',', '.') ?>
-                = R$ <?= number_format($value['valor'] * $value['qtd'], 2, ',', '.'); ?> - 
-                <?= $value['produto']; ?>
-            </div>
-            <div>
-            </div>
-       
-        <hr>
+			<?php foreach($_SESSION['carrinho'] as $key => $value) : ?>
+				<div>
+					<a id="excluir" href="?remover=<?= $key ?>"><i class="bi bi-trash text-danger"></i></a>
+					<?= $value['qtd'] .' x '. number_format($value['valor'], 2, ',', '.') ?>
+					= R$ <?= number_format($value['valor'] * $value['qtd'], 2, ',', '.'); ?> - 
+					<?= $value['produto']; ?>
+				</div>
+				<div>
+				</div>
+		
+			<hr>
 
-        <?php endforeach; ?>
+        <?php 
+			endforeach;
+		endif; 
+		?>
+
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -183,6 +183,10 @@ if(!isset($_SESSION)){
     </div>
   </div>
 </div>
+<script>
+    const btn = document.querySelector("#excluir")
 
-
-
+    bnt.addEventListener('click', () =>{
+        location.reload()
+    })
+</script>
