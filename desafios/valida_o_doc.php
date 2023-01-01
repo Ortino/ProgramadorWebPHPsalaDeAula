@@ -27,7 +27,42 @@
         echo "<p>peso : $peso </p>";
                
     }
-    
+    //filtro
+
+    if(!$email = filter_input(INPUT_POST,'email', FILTER_VALIDATE_EMAIL)){
+    $erros[] = "E-mail invalido";
+    }
+    if(!$idade = filter_input(INPUT_POST,'idade', FILTER_VALIDATE_INT)){
+    $erros[] = "Idade invalido";
+    }
+    if(!$telefone = filter_input(INPUT_POST,'telefone', FILTER_VALIDATE_INT)){
+    $erros[] = "Telefone invalido";
+    }
+    if(!$peso = filter_input(INPUT_POST, 'peso', FILTER_VALIDATE_FLOAT)){
+    $erros[] = "Peso tem que ser um número real cam casas decimais";
+    }
+    function mascara(i) {
+        // console.log(i);
+        // console.log(i.value);
+        var v = i.value;
+
+        if(isNaN(v[v.length -1])){
+            i.value = v.substring(0, v.length -1);
+            return;
+        }
+         i.setAttribute("maxlength", 14);
+         if(v.length == 3 || v.length == 7){i.value += ".";}
+         if(v.length == 11) i.value += "-";
+
+    }
+    if(!empty($erros)){ //empty =vazio - ! = não
+        foreach($erros as $erro) {
+            echo "<li>$erro</li>"; // li = lista ]
+        }   
+        } else {
+        echo "<p>Dados corretos.</p>";
+    }
+
 
 ?>
 <!DOCTYPE html>
@@ -43,6 +78,9 @@
             Nome
             <input type="text" nome="nome" autofocus>
         </label><br>
+        <label class="form-label">CPF:</label>
+            <input type="text" name="cpf" oninput="mascara(this)" class="form-control">
+            
         <label> 
             E-mail
             <input type="email" name="email">
@@ -60,9 +98,8 @@
             <!-- step = de quanto vai aumentar -->
         </label><br>
         <label>
-            Telefone
-            <input type="number" name="tel">
-        </label><br>
+            <label class="form-label">Telefone:</label>
+            <input type="text" name="tel" class="form-control"><br>
             Peso
             <input type="number" min="2.4"  max="200.0" step="0.1" name="peso"> Kilos
         </label><br>
